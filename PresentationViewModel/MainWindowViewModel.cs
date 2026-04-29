@@ -17,30 +17,48 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
 {
   public class MainWindowViewModel : ViewModelBase, IDisposable
   {
-    #region ctor
+        #region ctor
 
-    public MainWindowViewModel() : this(null)
-    { }
+        public MainWindowViewModel() : this(null)
+        {
+        }
 
-    internal MainWindowViewModel(ModelAbstractApi modelLayerAPI)
-    {
-      ModelLayer = modelLayerAPI == null ? ModelAbstractApi.CreateModel() : modelLayerAPI;
-      Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
-    }
+        internal MainWindowViewModel(ModelAbstractApi modelLayerAPI)
+        {
+            ModelLayer = modelLayerAPI == null ? ModelAbstractApi.CreateModel() : modelLayerAPI;
+            Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
 
-    #endregion ctor
+            StartCommand = new RelayCommand(() => Start(BallCount));
+            StopCommand = new RelayCommand(Stop);
+        }
 
-    #region public API
 
-    public void Start(int numberOfBalls)
-    {
-      if (Disposed)
-        throw new ObjectDisposedException(nameof(MainWindowViewModel));
-      ModelLayer.Start(numberOfBalls);
-      Observer.Dispose();
-    }
+        #endregion ctor
 
-    public ObservableCollection<ModelIBall> Balls { get; } = new ObservableCollection<ModelIBall>();
+        #region public API
+
+        public void Start(int numberOfBalls)
+        {
+            if (Disposed)
+                throw new ObjectDisposedException(nameof(MainWindowViewModel));
+
+            ModelLayer.Start(numberOfBalls);
+        }
+
+        public void Stop()
+        {
+            
+            Balls.Clear();
+            Observer.Dispose();
+            ModelLayer.Dispose();
+
+            // tworzymy świeży model, gotowy na kolejny Start
+            ModelLayer = ModelAbstractApi.CreateModel();
+            Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
+        }
+
+
+        public ObservableCollection<ModelIBall> Balls { get; } = new ObservableCollection<ModelIBall>();
 
     #endregion public API
 
@@ -79,6 +97,25 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
     private ModelAbstractApi ModelLayer;
     private bool Disposed = false;
 
-    #endregion private
-  }
+        #endregion private
+
+
+       public int BallCount
+        {
+            get => _ballCount;
+            set
+            {
+                _ballCount = value;
+                RaisePropertyChanged(nameof(BallCount));
+            }
+
+
+        }
+        private int _ballCount = 10;
+
+        public RelayCommand StartCommand { get; }
+        public RelayCommand StopCommand { get; }
+
+
+    }
 }

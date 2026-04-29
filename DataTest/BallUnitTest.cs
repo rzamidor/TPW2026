@@ -8,6 +8,9 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TP.ConcurrentProgramming.Data;
+
 namespace TP.ConcurrentProgramming.Data.Test
 {
   [TestClass]
@@ -31,6 +34,21 @@ namespace TP.ConcurrentProgramming.Data.Test
       newInstance.Move(new Vector(0.0, 0.0));
       Assert.AreEqual<int>(1, numberOfCallBackCalled);
       Assert.AreEqual<IVector>(initialPosition, curentPosition);
+    }
+
+    [TestMethod]
+    public void BallDoesNotLeaveBoard()
+    {
+      Ball ball = new Ball(new Vector(50, 50), new Vector(0, 0));
+      double width = 100;
+      double height = 100;
+      double radius = 10;
+
+      ball.Move(new Vector(-100, 0), width, height, radius);
+      Assert.IsTrue(ball.Position.x >= radius);
+
+      ball.Move(new Vector(1000, 0), width, height, radius);
+      Assert.IsTrue(ball.Position.x <= width - radius);
     }
   }
 }

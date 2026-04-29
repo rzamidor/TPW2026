@@ -26,9 +26,11 @@ namespace TP.ConcurrentProgramming.Presentation.Model
       underneathBall.NewPositionNotification += NewPositionNotification;
     }
 
-    #region IBall
+       public double Diameter { get; init; } = 20.0;
 
-    public double Top
+        #region IBall
+
+        public double Top
     {
       get { return TopBackingField; }
       private set
@@ -52,7 +54,7 @@ namespace TP.ConcurrentProgramming.Presentation.Model
       }
     }
 
-    public double Diameter { get; init; } = 0;
+ 
 
     #region INotifyPropertyChanged
 

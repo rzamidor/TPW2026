@@ -1,0 +1,7 @@
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\bin\Debug\net8.0\.msCoverageSourceRootsMapping_DataTest
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\bin\Debug\net8.0\CoverletSourceRootsMapping_DataTest
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\obj\Debug\net8.0\DataTest.csproj.AssemblyReference.cache
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\obj\Debug\net8.0\DataTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\obj\Debug\net8.0\DataTest.AssemblyInfoInputs.cache
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\obj\Debug\net8.0\DataTest.AssemblyInfo.cs
+C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\DataTest\obj\Debug\net8.0\DataTest.csproj.CoreCompileInputs.cache

@@ -28,23 +28,42 @@ namespace TP.ConcurrentProgramming.Data
 
     public IVector Velocity { get; set; }
 
-    #endregion IBall
+        #endregion IBall
 
-    #region private
+        #region private
 
-    private Vector Position;
+   public Vector Position { get; private set; }
 
-    private void RaiseNewPositionChangeNotification()
+
+        private void RaiseNewPositionChangeNotification()
     {
       NewPositionNotification?.Invoke(this, Position);
     }
 
-    internal void Move(Vector delta)
-    {
-      Position = new Vector(Position.x + delta.x, Position.y + delta.y);
-      RaiseNewPositionChangeNotification();
-    }
+        internal void Move(IVector delta, double width, double height, double radius)
+        {
+            // aktualizacja pozycji na podstawie delta
+            double newX = Position.x + delta.x;
+            double newY = Position.y + delta.y;
 
-    #endregion private
-  }
+            if (newX <= radius || newX >= width - radius)
+                Velocity = new Vector(-Velocity.x, Velocity.y);
+
+            if (newY <= radius || newY >= height - radius)
+                Velocity = new Vector(Velocity.x, -Velocity.y);
+
+            // ograniczenie pozycji do obszaru stołu
+            newX = Math.Max(radius, Math.Min(width - radius, newX));
+            newY = Math.Max(radius, Math.Min(height - radius, newY));
+
+            Position = new Vector(newX, newY);
+
+            RaiseNewPositionChangeNotification();
+        }
+
+
+
+
+        #endregion private
+    }
 }
