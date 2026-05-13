@@ -174,3 +174,14 @@ C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\BusinessLogicTest\obj\D
 C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.pdb
 C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.genruntimeconfig.cache
 C:\Users\Wiktor\Desktop\programowanie\c++++\TPW2026-main\BusinessLogicTest\obj\Debug\net9.0\ref\BusinessLogicTest.dll
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\bin\Debug\net9.0\.msCoverageSourceRootsMapping_BusinessLogicTest
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\bin\Debug\net9.0\CoverletSourceRootsMapping_BusinessLogicTest
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.csproj.AssemblyReference.cache
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.AssemblyInfoInputs.cache
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.AssemblyInfo.cs
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.csproj.CoreCompileInputs.cache
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.sourcelink.json
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.dll
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\refint\BusinessLogicTest.dll
+C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.pdb

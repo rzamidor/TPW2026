@@ -1,69 +1,63 @@
-﻿//____________________________________________________________________________________________________________________________________
-//
-//  Copyright (C) 2024, Mariusz Postol LODZ POLAND.
-//
-//  To be in touch join the community by pressing the `Watch` button and get started commenting using the discussion panel at
-//
-//  https://github.com/mpostol/TP/discussions/182
-//
-//_____________________________________________________________________________________________________________________________________
-
-namespace TP.ConcurrentProgramming.Data
+﻿namespace TP.ConcurrentProgramming.Data
 {
-  internal class Ball : IBall
-  {
-    #region ctor
-
-    internal Ball(Vector initialPosition, Vector initialVelocity)
+    internal class Ball : IBall
     {
-      Position = initialPosition;
-      Velocity = initialVelocity;
-    }
+        private Vector position;
+        private Vector velocity;
 
-    #endregion ctor
+        public event EventHandler<IVector>? NewPositionNotification;
 
-    #region IBall
+        public int Id { get; }
+        public double Radius { get; }
+        public double Mass { get; }
 
-    public event EventHandler<IVector>? NewPositionNotification;
+        public double X => position.x;
+        public double Y => position.y;
+        public double Vx => velocity.x;
+        public double Vy => velocity.y;
 
-    public IVector Velocity { get; set; }
-
-        #endregion IBall
-
-        #region private
-
-   public Vector Position { get; private set; }
-
-
-        private void RaiseNewPositionChangeNotification()
-    {
-      NewPositionNotification?.Invoke(this, Position);
-    }
-
-        internal void Move(IVector delta, double width, double height, double radius)
+        public IVector Velocity
         {
-            // aktualizacja pozycji na podstawie delta
-            double newX = Position.x + delta.x;
-            double newY = Position.y + delta.y;
-
-            if (newX <= radius || newX >= width - radius)
-                Velocity = new Vector(-Velocity.x, Velocity.y);
-
-            if (newY <= radius || newY >= height - radius)
-                Velocity = new Vector(Velocity.x, -Velocity.y);
-
-            // ograniczenie pozycji do obszaru stołu
-            newX = Math.Max(radius, Math.Min(width - radius, newX));
-            newY = Math.Max(radius, Math.Min(height - radius, newY));
-
-            Position = new Vector(newX, newY);
-
-            RaiseNewPositionChangeNotification();
+            get => velocity;
+            set => velocity = new Vector(value.x, value.y);
         }
 
+        public Ball(int id, Vector position, Vector velocity, double radius, double mass)
+        {
+            Id = id;
+            this.position = position;
+            this.velocity = velocity;
+            Radius = radius;
+            Mass = mass;
+        }
 
+        public void Move(IVector delta, double width, double height, double radius)
+        {
+            position = new Vector(position.x + delta.x, position.y + delta.y);
 
+            if (position.x - radius < 0)
+            {
+                position = new Vector(radius, position.y);
+                velocity = new Vector(-velocity.x, velocity.y);
+            }
+            else if (position.x + radius > width)
+            {
+                position = new Vector(width - radius, position.y);
+                velocity = new Vector(-velocity.x, velocity.y);
+            }
 
-        #endregion private
+            if (position.y - radius < 0)
+            {
+                position = new Vector(position.x, radius);
+                velocity = new Vector(velocity.x, -velocity.y);
+            }
+            else if (position.y + radius > height)
+            {
+                position = new Vector(position.x, height - radius);
+                velocity = new Vector(velocity.x, -velocity.y);
+            }
+
+            NewPositionNotification?.Invoke(this, position);
+        }
     }
 }

@@ -8,47 +8,66 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
-namespace TP.ConcurrentProgramming.BusinessLogic.Test
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TP.ConcurrentProgramming.Data;
+
+namespace TP.ConcurrentProgramming.Data.Test
 {
-  [TestClass]
-  public class BallUnitTest
-  {
-    [TestMethod]
-    public void MoveTestMethod()
+    [TestClass]
+    public class BallUnitTest
     {
-      DataBallFixture dataBallFixture = new DataBallFixture();
-      Ball newInstance = new(dataBallFixture);
-      int numberOfCallBackCalled = 0;
-      newInstance.NewPositionNotification += (sender, position) => { Assert.IsNotNull(sender); Assert.IsNotNull(position); numberOfCallBackCalled++; };
-      dataBallFixture.Move();
-      Assert.AreEqual<int>(1, numberOfCallBackCalled);
+        [TestMethod]
+        public void ConstructorTestMethod()
+        {
+            Vector pos = new Vector(0.0, 0.0);
+            Vector vel = new Vector(1.0, 1.0);
+
+            Ball ball = new Ball(1, pos, vel, 10, 1);
+
+            Assert.AreEqual(1, ball.Id);
+            Assert.AreEqual(0.0, ball.X);
+            Assert.AreEqual(0.0, ball.Y);
+            Assert.AreEqual(1.0, ball.Vx);
+            Assert.AreEqual(1.0, ball.Vy);
+            Assert.AreEqual(10, ball.Radius);
+            Assert.AreEqual(1, ball.Mass);
+        }
+
+        [TestMethod]
+        public void MoveRaisesEvent()
+        {
+            Ball ball = new Ball(1, new Vector(10, 10), new Vector(0, 0), 10, 1);
+
+            int calls = 0;
+            IVector lastPos = new Vector(0, 0);
+
+            ball.NewPositionNotification += (sender, pos) =>
+            {
+                calls++;
+                lastPos = pos;
+            };
+
+            ball.Move(new Vector(5, 5), 200, 200, 10);
+
+            Assert.AreEqual(1, calls);
+            Assert.AreEqual(15, lastPos.x);
+            Assert.AreEqual(15, lastPos.y);
+        }
+
+        [TestMethod]
+        public void BallDoesNotLeaveBoard()
+        {
+            Ball ball = new Ball(1, new Vector(50, 50), new Vector(0, 0), 10, 1);
+
+            double width = 100;
+            double height = 100;
+            double radius = 10;
+
+            ball.Move(new Vector(-100, 0), width, height, radius);
+            Assert.IsTrue(ball.X >= radius);
+
+            ball.Move(new Vector(1000, 0), width, height, radius);
+            Assert.IsTrue(ball.X <= width - radius);
+        }
     }
-
-    #region testing instrumentation
-
-    private class DataBallFixture : Data.IBall
-    {
-      public Data.IVector Velocity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-      public event EventHandler<Data.IVector>? NewPositionNotification;
-
-      internal void Move()
-      {
-        NewPositionNotification?.Invoke(this, new VectorFixture(0.0, 0.0));
-      }
-    }
-
-    private class VectorFixture : Data.IVector
-    {
-      internal VectorFixture(double X, double Y)
-      {
-        x = X; y = Y;
-      }
-
-      public double x { get; init; }
-      public double y { get; init; }
-    }
-
-    #endregion testing instrumentation
-  }
 }

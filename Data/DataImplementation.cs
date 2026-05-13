@@ -1,15 +1,6 @@
-﻿//____________________________________________________________________________________________________________________________________
-//
-//  Copyright (C) 2024, Mariusz Postol LODZ POLAND.
-//
-//  To be in touch join the community by pressing the `Watch` button and get started commenting using the discussion panel at
-//
-//  https://github.com/mpostol/TP/discussions/182
-//
-//_____________________________________________________________________________________________________________________________________
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 
 namespace TP.ConcurrentProgramming.Data
@@ -25,6 +16,9 @@ namespace TP.ConcurrentProgramming.Data
         private const double WIDTH = 800;
         private const double HEIGHT = 400;
         private const double RADIUS = 10;
+        private const double MASS = 1.0;
+
+        private readonly object _lock = new();
 
         public DataImplementation()
         {
@@ -39,35 +33,54 @@ namespace TP.ConcurrentProgramming.Data
 
             upperHandler = upperLayerHandler ?? throw new ArgumentNullException(nameof(upperLayerHandler));
 
-            balls.Clear();
-
-            for (int i = 0; i < numberOfBalls; i++)
+            lock (_lock)
             {
-                double x = random.NextDouble() * (WIDTH - 2 * RADIUS) + RADIUS;
-                double y = random.NextDouble() * (HEIGHT - 2 * RADIUS) + RADIUS;
+                balls.Clear();
 
-                double vx = random.NextDouble() * 4 - 2; // -2..2
-                double vy = random.NextDouble() * 4 - 2;
+                for (int i = 0; i < numberOfBalls; i++)
+                {
+                    double x = random.NextDouble() * (WIDTH - 2 * RADIUS) + RADIUS;
+                    double y = random.NextDouble() * (HEIGHT - 2 * RADIUS) + RADIUS;
 
-                var ball = new Ball(new Vector(x, y), new Vector(vx, vy));
+                    double vx = random.NextDouble() * 4 - 2; // -2..2
+                    double vy = random.NextDouble() * 4 - 2;
 
-                balls.Add(ball);
+                    var ball = new Ball(i, new Vector(x, y), new Vector(vx, vy), RADIUS, MASS);
 
-                // notify Logic layer about the new ball
-                upperHandler(new Vector(x, y), ball);
+                    balls.Add(ball);
+
+                    upperHandler(new Vector(x, y), ball);
+                }
             }
 
             timer.Start();
         }
 
-        private void OnTick(object sender, ElapsedEventArgs e)
+        private void OnTick(object? sender, ElapsedEventArgs e)
         {
-            foreach (var ball in balls)
+            lock (_lock)
             {
-                // use velocity as delta
-                var delta = ball.Velocity;
+                foreach (var ball in balls)
+                {
+                    var delta = ball.Velocity;
+                    ball.Move(delta, WIDTH, HEIGHT, ball.Radius);
+                }
+            }
+        }
 
-                ball.Move(delta, WIDTH, HEIGHT, RADIUS);
+        public override IReadOnlyList<IBall> GetBalls()
+        {
+            lock (_lock)
+                return balls.Cast<IBall>().ToList();
+        }
+
+        public override void UpdateBallVelocity(int id, double vx, double vy)
+        {
+            lock (_lock)
+            {
+                var ball = balls.FirstOrDefault(b => b.Id == id);
+                if (ball != null)
+                    ball.Velocity = new Vector(vx, vy);
             }
         }
 
@@ -78,7 +91,10 @@ namespace TP.ConcurrentProgramming.Data
 
             timer.Stop();
             timer.Dispose();
-            balls.Clear();
+            lock (_lock)
+            {
+                balls.Clear();
+            }
             disposed = true;
         }
     }

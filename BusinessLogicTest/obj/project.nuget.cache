@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zIzYR9fAYC0=",
+  "dgSpecHash": "8dfnHajV7vg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\TPW2026-main\\BusinessLogicTest\\BusinessLogicTest.csproj",
+  "projectFilePath": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogicTest\\BusinessLogicTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wiktor\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Wiktor\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",
