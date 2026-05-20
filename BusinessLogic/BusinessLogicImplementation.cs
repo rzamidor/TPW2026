@@ -18,7 +18,14 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
         public override void Start(int numberOfBalls, Action<IPosition, IBall> upperLayerHandler)
         {
-  
+            _dataLayer.Start(numberOfBalls, (vector, dataBall) =>
+            {
+                Ball businessBall = new Ball(dataBall);
+
+                Position pos = new Position(vector.x, vector.y);
+
+                upperLayerHandler(pos, businessBall);
+            });
         }
 
         public override void Dispose()
