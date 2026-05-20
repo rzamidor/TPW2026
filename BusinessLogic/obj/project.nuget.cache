@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kTbT4hb1lfU=",
+  "dgSpecHash": "REX4kuut2BE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogic\\BusinessLogic.csproj",
+  "projectFilePath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Wiktor\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\rzaba\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\rzaba\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\rzaba\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\rzaba\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512"
   ],
   "logs": []
 }

@@ -11,12 +11,28 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogicTest\\BusinessLogicAbstractAPIUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\PositionUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogicTest\\PositionUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessBallUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogicTest\\BusinessBallUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\DataTest\\BallUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DataTest\\BallUnitTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogicImplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogic\\BusinessLogicImplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogicAbstractAPI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogic\\BusinessLogicAbstractAPI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\Position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogic\\Position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessBall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLogic\\BusinessBall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,22 +52,9 @@
               "RelativeDocumentMoniker": "BusinessLogicTest\\BusinessLogicImplementationUnitTest.cs",
               "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessLogicImplementationUnitTest.cs",
               "RelativeToolTip": "BusinessLogicTest\\BusinessLogicImplementationUnitTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T10:31:07.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PositionUnitTest.cs",
-              "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\PositionUnitTest.cs",
-              "RelativeDocumentMoniker": "BusinessLogicTest\\PositionUnitTest.cs",
-              "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\PositionUnitTest.cs",
-              "RelativeToolTip": "BusinessLogicTest\\PositionUnitTest.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T10:29:59.664Z",
+              "WhenOpened": "2026-05-20T14:39:28.668Z",
               "EditorCaption": ""
             },
             {
@@ -62,22 +65,87 @@
               "RelativeDocumentMoniker": "BusinessLogicTest\\BusinessLogicAbstractAPIUnitTest.cs",
               "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessLogicAbstractAPIUnitTest.cs",
               "RelativeToolTip": "BusinessLogicTest\\BusinessLogicAbstractAPIUnitTest.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T10:28:09.471Z",
+              "WhenOpened": "2026-05-20T14:39:27.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "BusinessBallUnitTest.cs",
               "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessBallUnitTest.cs",
               "RelativeDocumentMoniker": "BusinessLogicTest\\BusinessBallUnitTest.cs",
               "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessBallUnitTest.cs",
               "RelativeToolTip": "BusinessLogicTest\\BusinessBallUnitTest.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAQwD8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T10:18:11.846Z",
+              "WhenOpened": "2026-05-20T14:39:26.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BallUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\DataTest\\BallUnitTest.cs",
+              "RelativeDocumentMoniker": "DataTest\\BallUnitTest.cs",
+              "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\DataTest\\BallUnitTest.cs",
+              "RelativeToolTip": "DataTest\\BallUnitTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T14:35:59.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BusinessLogicAbstractAPI.cs",
+              "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogicAbstractAPI.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\BusinessLogicAbstractAPI.cs",
+              "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogicAbstractAPI.cs",
+              "RelativeToolTip": "BusinessLogic\\BusinessLogicAbstractAPI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T14:35:33.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Position.cs",
+              "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\Position.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Position.cs",
+              "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\Position.cs",
+              "RelativeToolTip": "BusinessLogic\\Position.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T14:24:51.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BusinessLogicImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogicImplementation.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\BusinessLogicImplementation.cs",
+              "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogicImplementation.cs",
+              "RelativeToolTip": "BusinessLogic\\BusinessLogicImplementation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T14:23:30.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BusinessBall.cs",
+              "DocumentMoniker": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessBall.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\BusinessBall.cs",
+              "ToolTip": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessBall.cs",
+              "RelativeToolTip": "BusinessLogic\\BusinessBall.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T14:19:12.372Z",
               "EditorCaption": ""
             }
           ]

@@ -3,10 +3,9 @@
     "",
     "\\BusinessLogic",
     "\\BusinessLogicTest",
-    "\\BusinessLogicTest\\bin\\Debug",
-    "\\BusinessLogicTest\\bin\\Debug\\net8.0",
-    "\\BusinessLogic\\bin\\Release"
+    "\\Data",
+    "\\DataTest"
   ],
-  "SelectedNode": "\\BusinessLogic\\BusinessLogic.csproj",
+  "SelectedNode": "\\BusinessLogicTest\\BusinessLogicImplementationUnitTest.cs",
   "PreviewInSolutionExplorer": false
 }

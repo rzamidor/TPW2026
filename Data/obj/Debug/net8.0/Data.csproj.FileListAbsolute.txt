@@ -23,3 +23,16 @@ C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\Data\bin\Debug\net8.0\
 C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\Data\bin\Debug\net8.0\DataLayer.dll
 C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\Data\bin\Debug\net8.0\DataLayer.pdb
 C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\Data\obj\Debug\net8.0\ref\DataLayer.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\bin\Debug\net8.0\DataLayer.deps.json
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\bin\Debug\net8.0\DataLayer.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\bin\Debug\net8.0\DataLayer.pdb
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\Data.csproj.AssemblyReference.cache
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\Data.AssemblyInfoInputs.cache
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\Data.AssemblyInfo.cs
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\Data.sourcelink.json
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\DataLayer.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\refint\DataLayer.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\DataLayer.pdb
+C:\Users\rzaba\Documents\GitHub\TPW2026\Data\obj\Debug\net8.0\ref\DataLayer.dll

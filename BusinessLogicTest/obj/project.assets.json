@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net9.0": {
       "coverlet.collector/6.0.2": {
@@ -1729,24 +1729,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Wiktor\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\rzaba\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogicTest\\BusinessLogicTest.csproj",
+      "projectUniqueName": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessLogicTest.csproj",
       "projectName": "BusinessLogicTest",
-      "projectPath": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogicTest\\BusinessLogicTest.csproj",
-      "packagesPath": "C:\\Users\\Wiktor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogicTest\\obj\\",
+      "projectPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\BusinessLogicTest.csproj",
+      "packagesPath": "C:\\Users\\rzaba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogicTest\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Wiktor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\rzaba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1754,7 +1749,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1762,8 +1756,8 @@
           "framework": "net9.0",
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogic\\BusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\Wiktor\\Desktop\\programowanie\\c++++\\etap2\\TPW2026\\BusinessLogic\\BusinessLogic.csproj"
+            "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj"
             }
           }
         }
@@ -1778,7 +1772,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -1819,12 +1813,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.16, 9.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[9.0.16, 9.0.16]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[9.0.16, 9.0.16]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

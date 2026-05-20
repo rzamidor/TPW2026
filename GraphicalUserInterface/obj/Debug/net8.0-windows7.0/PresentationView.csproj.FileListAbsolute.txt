@@ -61,3 +61,6 @@ C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\GraphicalUserInterface
 C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\GraphicalUserInterface\obj\Debug\net8.0-windows7.0\TP.ConcurrentProgramming.PresentationView.pdb
 C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\GraphicalUserInterface\obj\Debug\net8.0-windows7.0\PresentationView.genruntimeconfig.cache
 C:\Users\Wiktor\Desktop\programowanie\c++++\etap2\TPW2026\GraphicalUserInterface\obj\Debug\net8.0-windows7.0\ref\TP.ConcurrentProgramming.PresentationView.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\GraphicalUserInterface\obj\Debug\net8.0-windows7.0\TP.ConcurrentProgramming.PresentationView.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\GraphicalUserInterface\obj\Debug\net8.0-windows7.0\refint\TP.ConcurrentProgramming.PresentationView.dll
+C:\Users\rzaba\Documents\GitHub\TPW2026\GraphicalUserInterface\obj\Debug\net8.0-windows7.0\TP.ConcurrentProgramming.PresentationView.pdb
