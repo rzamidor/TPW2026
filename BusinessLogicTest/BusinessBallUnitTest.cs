@@ -7,67 +7,64 @@
 //  https://github.com/mpostol/TP/discussions/182
 //
 //_____________________________________________________________________________________________________________________________________
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TP.ConcurrentProgramming.Data;
+using System;
+using TP.ConcurrentProgramming.BusinessLogic;
 
-namespace TP.ConcurrentProgramming.Data.Test
+namespace TP.ConcurrentProgramming.BusinessLogic.Test
 {
     [TestClass]
-    public class BallUnitTest
+    public class BusinessBallUnitTest
     {
-        [TestMethod]
-        public void ConstructorTestMethod()
+        private class StubVector : TP.ConcurrentProgramming.Data.IVector
         {
-            Vector pos = new Vector(0.0, 0.0);
-            Vector vel = new Vector(1.0, 1.0);
+            public double x { get; init; }
+            public double y { get; init; }
+        }
 
-            Ball ball = new Ball(1, pos, vel, 10, 1);
+        private class StubDataBall : TP.ConcurrentProgramming.Data.IBall
+        {
+            public event EventHandler<TP.ConcurrentProgramming.Data.IVector>? NewPositionNotification;
 
-            Assert.AreEqual(1, ball.Id);
-            Assert.AreEqual(0.0, ball.X);
-            Assert.AreEqual(0.0, ball.Y);
-            Assert.AreEqual(1.0, ball.Vx);
-            Assert.AreEqual(1.0, ball.Vy);
-            Assert.AreEqual(10, ball.Radius);
-            Assert.AreEqual(1, ball.Mass);
+            public TP.ConcurrentProgramming.Data.IVector Velocity { get; set; } = new StubVector();
+            public double X => 0;
+            public double Y => 0;
+            public double Vx => 0;
+            public double Vy => 0;
+            public double Radius => 10;
+            public double Mass => 1;
+            public int Id => 1;
+
+            public void SimulateMove(double x, double y)
+            {
+                NewPositionNotification?.Invoke(this, new StubVector { x = x, y = y });
+            }
         }
 
         [TestMethod]
-        public void MoveRaisesEvent()
+        public void Ball_EventMapping_TestMethod()
         {
-            Ball ball = new Ball(1, new Vector(10, 10), new Vector(0, 0), 10, 1);
+            StubDataBall stubDataBall = new StubDataBall();
 
-            int calls = 0;
-            IVector lastPos = new Vector(0, 0);
+            Ball businessBall = new Ball(stubDataBall);
 
-            ball.NewPositionNotification += (sender, pos) =>
+            int eventTriggerCount = 0;
+            IPosition? receivedPosition = null;
+
+            businessBall.NewPositionNotification += (sender, position) =>
             {
-                calls++;
-                lastPos = pos;
+                eventTriggerCount++;
+                receivedPosition = position;
             };
 
-            ball.Move(new Vector(5, 5), 200, 200, 10);
+            double testX = 15.5;
+            double testY = 42.1;
+            stubDataBall.SimulateMove(testX, testY);
 
-            Assert.AreEqual(1, calls);
-            Assert.AreEqual(15, lastPos.x);
-            Assert.AreEqual(15, lastPos.y);
-        }
-
-        [TestMethod]
-        public void BallDoesNotLeaveBoard()
-        {
-            Ball ball = new Ball(1, new Vector(50, 50), new Vector(0, 0), 10, 1);
-
-            double width = 100;
-            double height = 100;
-            double radius = 10;
-
-            ball.Move(new Vector(-100, 0), width, height, radius);
-            Assert.IsTrue(ball.X >= radius);
-
-            ball.Move(new Vector(1000, 0), width, height, radius);
-            Assert.IsTrue(ball.X <= width - radius);
+            Assert.AreEqual(1, eventTriggerCount);
+            Assert.IsNotNull(receivedPosition);
+            Assert.AreEqual(testX, receivedPosition.x);
+            Assert.AreEqual(testY, receivedPosition.y);
         }
     }
 }

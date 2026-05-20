@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BusinessLogic",
+    "\\BusinessLogicTest",
+    "\\BusinessLogicTest\\bin\\Debug",
+    "\\BusinessLogicTest\\bin\\Debug\\net8.0",
+    "\\BusinessLogic\\bin\\Release"
+  ],
+  "SelectedNode": "\\BusinessLogic\\BusinessLogic.csproj",
+  "PreviewInSolutionExplorer": false
+}
