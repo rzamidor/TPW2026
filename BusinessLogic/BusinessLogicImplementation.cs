@@ -52,17 +52,29 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
         private async Task DetectCollisionsLoop(CancellationToken token)
         {
+            double width = BusinessLogicAbstractAPI.GetDimensions.TableWidth;
+            double height = BusinessLogicAbstractAPI.GetDimensions.TableHeight;
+
             while (!token.IsCancellationRequested)
             {
                 lock (_logicLock)
                 {
                     for (int i = 0; i < _balls.Count; i++)
                     {
+                        var ball1 = _balls[i];
+
+                        if (ball1.X - ball1.Radius <= 0 || ball1.X + ball1.Radius >= width)
+                        {
+                            _dataLayer.UpdateBallVelocity(ball1.Id, -ball1.Vx, ball1.Vy);
+                        }
+                        if (ball1.Y - ball1.Radius <= 0 || ball1.Y + ball1.Radius >= height)
+                        {
+                            _dataLayer.UpdateBallVelocity(ball1.Id, ball1.Vx, -ball1.Vy);
+                        }
+
                         for (int j = i + 1; j < _balls.Count; j++)
                         {
-                            var ball1 = _balls[i];
                             var ball2 = _balls[j];
-
                             double dx = ball1.X - ball2.X;
                             double dy = ball1.Y - ball2.Y;
                             double distance = Math.Sqrt((dx * dx) + (dy * dy));
@@ -71,14 +83,12 @@ namespace TP.ConcurrentProgramming.BusinessLogic
                             {
                                 double tempVx = ball1.Vx;
                                 double tempVy = ball1.Vy;
-
                                 _dataLayer.UpdateBallVelocity(ball1.Id, ball2.Vx, ball2.Vy);
                                 _dataLayer.UpdateBallVelocity(ball2.Id, tempVx, tempVy);
                             }
                         }
                     }
                 }
-
                 await Task.Delay(10, token);
             }
         }

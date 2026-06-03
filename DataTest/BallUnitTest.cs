@@ -43,35 +43,10 @@ namespace TP.ConcurrentProgramming.Data.Test
                 numberOfCallBackCalled++;
             };
 
-            newInstance.Move(new Vector(0.0, 0.0), 800, 400, 10.0);
-
+            newInstance.Move(new Vector(0.0, 0.0));
             Assert.AreEqual(1, numberOfCallBackCalled);
             Assert.AreEqual(initialPosition.x, currentPosition.x);
             Assert.AreEqual(initialPosition.y, currentPosition.y);
-        }
-
-        [TestMethod]
-        public void BallDoesNotLeaveBoard()
-        {
-            double width = 100;
-            double height = 100;
-            double radius = 10;
-
-            Ball ball = new Ball(1, new Vector(50, 50), new Vector(0, 0), radius, 1.0);
-
-            // X tests
-            ball.Move(new Vector(-100, 0), width, height, radius);
-            Assert.IsTrue(ball.X >= radius);
-
-            ball.Move(new Vector(1000, 0), width, height, radius);
-            Assert.IsTrue(ball.X <= width - radius);
-
-            // Y tests
-            ball.Move(new Vector(0, -100), width, height, radius);
-            Assert.IsTrue(ball.Y >= radius);
-
-            ball.Move(new Vector(0, 1000), width, height, radius);
-            Assert.IsTrue(ball.Y <= height - radius);
         }
     }
 }

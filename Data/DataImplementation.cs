@@ -58,7 +58,7 @@ namespace TP.ConcurrentProgramming.Data
                 double deltaX = ball.Velocity.x * elapsedSeconds * speedMultiplier;
                 double deltaY = ball.Velocity.y * elapsedSeconds * speedMultiplier;
 
-                ball.Move(new Vector(deltaX, deltaY), WIDTH, HEIGHT, ball.Radius);
+                ball.Move(new Vector(deltaX, deltaY));
 
                 await Task.Delay(15, token);
             }

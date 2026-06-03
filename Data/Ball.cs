@@ -39,37 +39,14 @@
             Mass = mass;
         }
 
-        public void Move(IVector delta, double width, double height, double radius)
+        public void Move(IVector delta)
         {
             Vector currentPosition;
             lock (_ballLock)
             {
                 position = new Vector(position.x + delta.x, position.y + delta.y);
-
-                if (position.x - radius < 0)
-                {
-                    position = new Vector(radius, position.y);
-                    velocity = new Vector(-velocity.x, velocity.y);
-                }
-                else if (position.x + radius > width)
-                {
-                    position = new Vector(width - radius, position.y);
-                    velocity = new Vector(-velocity.x, velocity.y);
-                }
-
-                if (position.y - radius < 0)
-                {
-                    position = new Vector(position.x, radius);
-                    velocity = new Vector(velocity.x, -velocity.y);
-                }
-                else if (position.y + radius > height)
-                {
-                    position = new Vector(position.x, height - radius);
-                    velocity = new Vector(velocity.x, -velocity.y);
-                }
                 currentPosition = position;
             }
-
             NewPositionNotification?.Invoke(this, currentPosition);
         }
     }
