@@ -16,10 +16,18 @@
         public double Vx => velocity.x;
         public double Vy => velocity.y;
 
+        private readonly object _ballLock = new();
+
         public IVector Velocity
         {
-            get => velocity;
-            set => velocity = new Vector(value.x, value.y);
+            get
+            {
+                lock (_ballLock) return velocity;
+            }
+            set
+            {
+                lock (_ballLock) velocity = new Vector(value.x, value.y);
+            }
         }
 
         public Ball(int id, Vector position, Vector velocity, double radius, double mass)
@@ -33,31 +41,36 @@
 
         public void Move(IVector delta, double width, double height, double radius)
         {
-            position = new Vector(position.x + delta.x, position.y + delta.y);
+            Vector currentPosition;
+            lock (_ballLock)
+            {
+                position = new Vector(position.x + delta.x, position.y + delta.y);
 
-            if (position.x - radius < 0)
-            {
-                position = new Vector(radius, position.y);
-                velocity = new Vector(-velocity.x, velocity.y);
-            }
-            else if (position.x + radius > width)
-            {
-                position = new Vector(width - radius, position.y);
-                velocity = new Vector(-velocity.x, velocity.y);
+                if (position.x - radius < 0)
+                {
+                    position = new Vector(radius, position.y);
+                    velocity = new Vector(-velocity.x, velocity.y);
+                }
+                else if (position.x + radius > width)
+                {
+                    position = new Vector(width - radius, position.y);
+                    velocity = new Vector(-velocity.x, velocity.y);
+                }
+
+                if (position.y - radius < 0)
+                {
+                    position = new Vector(position.x, radius);
+                    velocity = new Vector(velocity.x, -velocity.y);
+                }
+                else if (position.y + radius > height)
+                {
+                    position = new Vector(position.x, height - radius);
+                    velocity = new Vector(velocity.x, -velocity.y);
+                }
+                currentPosition = position;
             }
 
-            if (position.y - radius < 0)
-            {
-                position = new Vector(position.x, radius);
-                velocity = new Vector(velocity.x, -velocity.y);
-            }
-            else if (position.y + radius > height)
-            {
-                position = new Vector(position.x, height - radius);
-                velocity = new Vector(velocity.x, -velocity.y);
-            }
-
-            NewPositionNotification?.Invoke(this, position);
+            NewPositionNotification?.Invoke(this, currentPosition);
         }
     }
 }

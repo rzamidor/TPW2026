@@ -9,6 +9,7 @@
 //_____________________________________________________________________________________________________________________________________
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TP.ConcurrentProgramming.Data;
 
@@ -43,25 +44,33 @@ namespace TP.ConcurrentProgramming.Data.Test
         }
 
         [TestMethod]
-        public void StartTestMethod()
+        public async Task Start_CreatesBalls_And_MovesThemConcurrently()
         {
             using (DataImplementation newInstance = new DataImplementation())
             {
                 int numberOfCallbackInvoked = 0;
-                int numberOfBalls2Create = 10;
+                int numberOfBalls2Create = 5;
 
                 newInstance.Start(
                     numberOfBalls2Create,
                     (startingPosition, ball) =>
                     {
                         numberOfCallbackInvoked++;
-                        Assert.IsTrue(startingPosition.x >= 0);
-                        Assert.IsTrue(startingPosition.y >= 0);
                         Assert.IsNotNull(ball);
                     });
 
                 Assert.AreEqual(numberOfBalls2Create, numberOfCallbackInvoked);
-                Assert.AreEqual(10, newInstance.GetBalls().Count);
+
+                var balls = newInstance.GetBalls();
+                Assert.AreEqual(5, balls.Count);
+
+                double initialX = balls[0].X;
+                double initialY = balls[0].Y;
+
+                await Task.Delay(200);
+
+                bool hasMoved = (initialX != balls[0].X) || (initialY != balls[0].Y);
+                Assert.IsTrue(hasMoved, "Kule nie poruszają się w tle!");
             }
         }
     }

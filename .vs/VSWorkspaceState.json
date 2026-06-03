@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BusinessLogic",
     "\\BusinessLogicTest",
-    "\\Data",
-    "\\DataTest"
+    "\\Data"
   ],
-  "SelectedNode": "\\BusinessLogic\\BusinessLogicImplementation.cs",
+  "SelectedNode": "\\Data\\DataImplementation.cs",
   "PreviewInSolutionExplorer": false
 }

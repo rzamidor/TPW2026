@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Timers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace TP.ConcurrentProgramming.Data
 {
     internal class DataImplementation : DataAbstractAPI
     {
-        private readonly List<Ball> balls = new();
-        private readonly System.Timers.Timer timer;
+        private readonly ConcurrentDictionary<int, Ball> balls = new();
         private readonly Random random = new();
-        private Action<IVector, IBall> upperHandler;
+        private Action<IVector, IBall>? upperHandler;
+        private CancellationTokenSource? cts;
         private bool disposed = false;
 
         private const double WIDTH = 800;
@@ -18,69 +21,59 @@ namespace TP.ConcurrentProgramming.Data
         private const double RADIUS = 10;
         private const double MASS = 1.0;
 
-        private readonly object _lock = new();
-
-        public DataImplementation()
-        {
-            timer = new System.Timers.Timer(20); // 50 FPS
-            timer.Elapsed += OnTick;
-        }
-
         public override void Start(int numberOfBalls, Action<IVector, IBall> upperLayerHandler)
         {
-            if (disposed)
-                throw new ObjectDisposedException(nameof(DataImplementation));
+            if (disposed) throw new ObjectDisposedException(nameof(DataImplementation));
 
             upperHandler = upperLayerHandler ?? throw new ArgumentNullException(nameof(upperLayerHandler));
+            cts = new CancellationTokenSource();
+            balls.Clear();
 
-            lock (_lock)
+            for (int i = 0; i < numberOfBalls; i++)
             {
-                balls.Clear();
+                double x = random.NextDouble() * (WIDTH - 2 * RADIUS) + RADIUS;
+                double y = random.NextDouble() * (HEIGHT - 2 * RADIUS) + RADIUS;
+                double vx = random.NextDouble() * 4 - 2; // -2..2
+                double vy = random.NextDouble() * 4 - 2;
 
-                for (int i = 0; i < numberOfBalls; i++)
-                {
-                    double x = random.NextDouble() * (WIDTH - 2 * RADIUS) + RADIUS;
-                    double y = random.NextDouble() * (HEIGHT - 2 * RADIUS) + RADIUS;
+                var ball = new Ball(i, new Vector(x, y), new Vector(vx, vy), RADIUS, MASS);
+                balls.TryAdd(i, ball);
 
-                    double vx = random.NextDouble() * 4 - 2; // -2..2
-                    double vy = random.NextDouble() * 4 - 2;
+                upperHandler(new Vector(x, y), ball);
 
-                    var ball = new Ball(i, new Vector(x, y), new Vector(vx, vy), RADIUS, MASS);
-
-                    balls.Add(ball);
-
-                    upperHandler(new Vector(x, y), ball);
-                }
+                Task.Run(() => MoveBallLoopAsync(ball, cts.Token));
             }
-
-            timer.Start();
         }
 
-        private void OnTick(object? sender, ElapsedEventArgs e)
+        private async Task MoveBallLoopAsync(Ball ball, CancellationToken token)
         {
-            lock (_lock)
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            const double speedMultiplier = 60.0;
+
+            while (!token.IsCancellationRequested)
             {
-                foreach (var ball in balls)
-                {
-                    var delta = ball.Velocity;
-                    ball.Move(delta, WIDTH, HEIGHT, ball.Radius);
-                }
+                double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
+                stopwatch.Restart();
+
+                double deltaX = ball.Velocity.x * elapsedSeconds * speedMultiplier;
+                double deltaY = ball.Velocity.y * elapsedSeconds * speedMultiplier;
+
+                ball.Move(new Vector(deltaX, deltaY), WIDTH, HEIGHT, ball.Radius);
+
+                await Task.Delay(15, token);
             }
         }
 
         public override IReadOnlyList<IBall> GetBalls()
         {
-            lock (_lock)
-                return balls.Cast<IBall>().ToList();
+            return balls.Values.Cast<IBall>().ToList();
         }
 
         public override void UpdateBallVelocity(int id, double vx, double vy)
         {
-            lock (_lock)
+            if (balls.TryGetValue(id, out var ball))
             {
-                var ball = balls.FirstOrDefault(b => b.Id == id);
-                if (ball != null)
-                    ball.Velocity = new Vector(vx, vy);
+                ball.Velocity = new Vector(vx, vy);
             }
         }
 
@@ -89,12 +82,11 @@ namespace TP.ConcurrentProgramming.Data
             if (disposed)
                 throw new ObjectDisposedException(nameof(DataImplementation));
 
-            timer.Stop();
-            timer.Dispose();
-            lock (_lock)
-            {
-                balls.Clear();
-            }
+            cts?.Cancel();
+            cts?.Dispose();
+
+            balls.Clear();
+
             disposed = true;
         }
     }
