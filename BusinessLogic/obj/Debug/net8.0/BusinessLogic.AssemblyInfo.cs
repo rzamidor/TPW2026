@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP.ConcurrentProgramming.BusinessLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdaa6d8382b87703a431681aa291adb281f56961")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d04e68803ed2a35665bf1c7631864dffda10f9b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP.ConcurrentProgramming.BusinessLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP.ConcurrentProgramming.BusinessLogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

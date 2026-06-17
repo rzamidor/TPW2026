@@ -12,8 +12,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
     internal class BusinessLogicImplementation : BusinessLogicAbstractAPI
     {
         private readonly DataAbstractAPI _dataLayer;
-        private readonly DiagnosticLogger _logger;
-
         private readonly List<Data.IBall> _balls = new();
         private readonly object _logicLock = new();
         private CancellationTokenSource? _cts;
@@ -21,7 +19,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         public BusinessLogicImplementation(DataAbstractAPI? dataLayer = null)
         {
             _dataLayer = dataLayer ?? DataAbstractAPI.GetDataLayer();
-            _logger = new DiagnosticLogger();
         }
 
         public override void Start(int numberOfBalls, Action<IPosition, IBall> upperLayerHandler)
@@ -39,11 +36,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
                     _balls.Add(dataBall);
                 }
 
-                dataBall.NewPositionNotification += (sender, newPos) =>
-                {
-                    _logger.LogBallData(dataBall.Id, newPos.x, newPos.y, dataBall.Velocity.x, dataBall.Velocity.y);
-                };
-
                 upperLayerHandler(pos, businessBall);
             });
 
@@ -55,48 +47,65 @@ namespace TP.ConcurrentProgramming.BusinessLogic
             double width = BusinessLogicAbstractAPI.GetDimensions.TableWidth;
             double height = BusinessLogicAbstractAPI.GetDimensions.TableHeight;
 
-            while (!token.IsCancellationRequested)
+            using PeriodicTimer timer = new PeriodicTimer(TimeSpan.FromMilliseconds(10));
+
+            try
             {
-                lock (_logicLock)
+                while (await timer.WaitForNextTickAsync(token))
                 {
-                    for (int i = 0; i < _balls.Count; i++)
+                    lock (_logicLock)
                     {
-                        var ball1 = _balls[i];
-
-                        if (ball1.X - ball1.Radius <= 0 || ball1.X + ball1.Radius >= width)
+                        for (int i = 0; i < _balls.Count; i++)
                         {
-                            _dataLayer.UpdateBallVelocity(ball1.Id, -ball1.Vx, ball1.Vy);
-                        }
-                        if (ball1.Y - ball1.Radius <= 0 || ball1.Y + ball1.Radius >= height)
-                        {
-                            _dataLayer.UpdateBallVelocity(ball1.Id, ball1.Vx, -ball1.Vy);
-                        }
+                            var ball1 = _balls[i];
 
-                        for (int j = i + 1; j < _balls.Count; j++)
-                        {
-                            var ball2 = _balls[j];
-                            double dx = ball1.X - ball2.X;
-                            double dy = ball1.Y - ball2.Y;
-                            double distance = Math.Sqrt((dx * dx) + (dy * dy));
-
-                            if (distance <= (ball1.Radius + ball2.Radius))
+                            if ((ball1.X - ball1.Radius <= 0 && ball1.Vx < 0) ||
+                                (ball1.X + ball1.Radius >= width && ball1.Vx > 0))
                             {
-                                double tempVx = ball1.Vx;
-                                double tempVy = ball1.Vy;
-                                _dataLayer.UpdateBallVelocity(ball1.Id, ball2.Vx, ball2.Vy);
-                                _dataLayer.UpdateBallVelocity(ball2.Id, tempVx, tempVy);
+                                _dataLayer.UpdateBallVelocity(ball1.Id, -ball1.Vx, ball1.Vy);
+                            }
+
+                            if ((ball1.Y - ball1.Radius <= 0 && ball1.Vy < 0) ||
+                                (ball1.Y + ball1.Radius >= height && ball1.Vy > 0))
+                            {
+                                _dataLayer.UpdateBallVelocity(ball1.Id, ball1.Vx, -ball1.Vy);
+                            }
+
+                            for (int j = i + 1; j < _balls.Count; j++)
+                            {
+                                var ball2 = _balls[j];
+                                double dx = ball1.X - ball2.X;
+                                double dy = ball1.Y - ball2.Y;
+                                double distance = Math.Sqrt((dx * dx) + (dy * dy));
+
+                                if (distance <= (ball1.Radius + ball2.Radius))
+                                {
+
+                                    double dvx = ball1.Vx - ball2.Vx;
+                                    double dvy = ball1.Vy - ball2.Vy;
+
+                                    if ((dx * dvx + dy * dvy) < 0)
+                                    {
+                                        double tempVx = ball1.Vx;
+                                        double tempVy = ball1.Vy;
+                                        _dataLayer.UpdateBallVelocity(ball1.Id, ball2.Vx, ball2.Vy);
+                                        _dataLayer.UpdateBallVelocity(ball2.Id, tempVx, tempVy);
+                                    }
+                                }
                             }
                         }
                     }
                 }
-                await Task.Delay(10, token);
+            }
+            catch (OperationCanceledException)
+            {
             }
         }
 
         public override void Dispose()
         {
             _cts?.Cancel();
-            _logger.Dispose();
+            _cts?.Dispose();
             _dataLayer.Dispose();
         }
     }

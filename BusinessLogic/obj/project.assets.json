@@ -74,19 +74,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rzaba\\.nuget\\packages\\": {}
+    "C:\\Users\\ae\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj",
       "projectName": "TP.ConcurrentProgramming.BusinessLogic",
-      "projectPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj",
-      "packagesPath": "C:\\Users\\rzaba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\BusinessLogic\\obj\\",
+      "projectPath": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\BusinessLogic\\BusinessLogic.csproj",
+      "packagesPath": "C:\\Users\\ae\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rzaba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ae\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -94,6 +99,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -101,8 +107,8 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj"
+            "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj"
             }
           }
         }
@@ -140,20 +146,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

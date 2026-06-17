@@ -3,25 +3,21 @@ using System.Collections.Concurrent;
 using System.IO;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace TP.ConcurrentProgramming.BusinessLogic
+namespace TP.ConcurrentProgramming.Data
 {
     internal class DiagnosticLogger : IDisposable
     {
-        private readonly ConcurrentQueue<string> _logQueue = new();
-        private readonly CancellationTokenSource _cts = new();
+        private readonly BlockingCollection<string> _logQueue = new();
         private readonly Task _loggingTask;
         private readonly string _filePath;
 
         public DiagnosticLogger()
         {
             _filePath = "balls_diagnostic_data.json";
-
             if (File.Exists(_filePath)) File.Delete(_filePath);
-
-            _loggingTask = Task.Run(LogLoopAsync);
+            _loggingTask = Task.Run(LogLoop);
         }
 
         public void LogBallData(int id, double x, double y, double vx, double vy)
@@ -37,36 +33,27 @@ namespace TP.ConcurrentProgramming.BusinessLogic
             };
 
             string jsonString = JsonSerializer.Serialize(logEntry);
-            _logQueue.Enqueue(jsonString);
+
+            if (!_logQueue.IsAddingCompleted)
+            {
+                _logQueue.Add(jsonString);
+            }
         }
 
-        private async Task LogLoopAsync()
+        private void LogLoop()
         {
             using StreamWriter writer = new StreamWriter(_filePath, append: true, encoding: Encoding.ASCII);
-
-            while (!_cts.Token.IsCancellationRequested)
+            foreach (var logEntry in _logQueue.GetConsumingEnumerable())
             {
-                if (_logQueue.TryDequeue(out string? logEntry))
-                {
-                    await writer.WriteLineAsync(logEntry);
-                }
-                else
-                {
-                    await Task.Delay(10);
-                }
-            }
-
-            while (_logQueue.TryDequeue(out string? logEntry))
-            {
-                await writer.WriteLineAsync(logEntry);
+                writer.WriteLine(logEntry);
             }
         }
 
         public void Dispose()
         {
-            _cts.Cancel();
+            _logQueue.CompleteAdding();
             _loggingTask.Wait();
-            _cts.Dispose();
+            _logQueue.Dispose();
         }
     }
 }

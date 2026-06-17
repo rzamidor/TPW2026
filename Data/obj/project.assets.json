@@ -55,19 +55,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rzaba\\.nuget\\packages\\": {}
+    "C:\\Users\\ae\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj",
       "projectName": "DataLayer",
-      "projectPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj",
-      "packagesPath": "C:\\Users\\rzaba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\Data\\obj\\",
+      "projectPath": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\ae\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\Data\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rzaba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ae\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -75,6 +80,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -117,20 +123,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

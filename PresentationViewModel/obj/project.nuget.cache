@@ -1,14 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "zBz21Fopd9c=",
+  "dgSpecHash": "ZPhNMQrAfiY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rzaba\\Documents\\GitHub\\TPW2026\\PresentationViewModel\\PresentationViewModel.csproj",
+  "projectFilePath": "C:\\Users\\ae\\Documents\\GitHub\\TPW2026\\PresentationViewModel\\PresentationViewModel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rzaba\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\rzaba\\.nuget\\packages\\system.reactive\\6.0.1\\system.reactive.6.0.1.nupkg.sha512",
-    "C:\\Users\\rzaba\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
-    "C:\\Users\\rzaba\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
-    "C:\\Users\\rzaba\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512"
+    "C:\\Users\\ae\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\ae\\.nuget\\packages\\system.reactive\\6.0.1\\system.reactive.6.0.1.nupkg.sha512"
   ],
   "logs": []
 }
