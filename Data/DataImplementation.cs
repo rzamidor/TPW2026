@@ -3,17 +3,18 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace TP.ConcurrentProgramming.Data
 {
     internal class DataImplementation : DataAbstractAPI
     {
         private readonly ConcurrentDictionary<int, Ball> balls = new();
+
+        private readonly ConcurrentDictionary<int, Timer> ballTimers = new();
+
         private readonly Random random = new();
         private readonly DiagnosticLogger logger = new();
         private Action<IVector, IBall>? upperHandler;
-        private CancellationTokenSource? cts;
         private bool disposed = false;
 
         private const double WIDTH = 800;
@@ -26,7 +27,6 @@ namespace TP.ConcurrentProgramming.Data
             if (disposed) throw new ObjectDisposedException(nameof(DataImplementation));
 
             upperHandler = upperLayerHandler ?? throw new ArgumentNullException(nameof(upperLayerHandler));
-            cts = new CancellationTokenSource();
             balls.Clear();
 
             for (int i = 0; i < numberOfBalls; i++)
@@ -46,22 +46,17 @@ namespace TP.ConcurrentProgramming.Data
 
                 upperHandler(new Vector(x, y), ball);
 
-                Task.Run(() => MoveBallLoopAsync(ball, cts.Token));
+                Timer timer = new Timer(MoveBallCallback, ball, 0, 15);
+                ballTimers.TryAdd(i, timer);
             }
         }
 
-        private async Task MoveBallLoopAsync(Ball ball, CancellationToken token)
+        private void MoveBallCallback(object? state)
         {
-            DateTime lastTime = DateTime.Now;
-            const double speedMultiplier = 60.0;
-
-            using PeriodicTimer timer = new PeriodicTimer(TimeSpan.FromMilliseconds(15));
-
-            while (await timer.WaitForNextTickAsync(token))
+            if (state is Ball ball)
             {
-                DateTime currentTime = DateTime.Now;
-                double elapsedSeconds = (currentTime - lastTime).TotalSeconds;
-                lastTime = currentTime;
+                const double elapsedSeconds = 0.015;
+                const double speedMultiplier = 60.0;
 
                 double deltaX = ball.Velocity.x * elapsedSeconds * speedMultiplier;
                 double deltaY = ball.Velocity.y * elapsedSeconds * speedMultiplier;
@@ -87,13 +82,16 @@ namespace TP.ConcurrentProgramming.Data
         {
             if (disposed) throw new ObjectDisposedException(nameof(DataImplementation));
 
-            cts?.Cancel();
-            cts?.Dispose();
+            // Zatrzymujemy i niszczymy wszystkie Timery kul
+            foreach (var timer in ballTimers.Values)
+            {
+                timer.Dispose();
+            }
+            ballTimers.Clear();
             balls.Clear();
+
             logger.Dispose();
             disposed = true;
         }
-
-
     }
 }
